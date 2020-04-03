@@ -59,3 +59,27 @@ XB | Microsoft XBOX
 
 * Explored ways in which the model fit could be improved through suitable changes to the model specification and variables
 * For the model constructed, verified whether the various regression assumptions are satisfied. If an assumption is violated, discussed how it can be handled in the report, and implemented the same in SAS.
+
+
+## Model evaluation and Classification
+
+For this section, the SAS dataset HeinzHunts has data on grocery store purchases of Hunts and Heinz ketchup. Each observation corresponds to one purchase occasion (of one of these brands) and consists of the following variables:
+
+Variable | Description
+---------|------------
+Heinz | =1 if Heinz was purchased, =0 if Hunts was purchased
+PriceHeinz | Price of Heinz 
+PriceHunts | Price of Hunts
+DisplHeinz | = 1 if Heinz had a store display, =0 if Heinz did not have a store display
+DisplHunts | = 1 if Hunts had a store display, =0 if Hunts did not have a store display
+FeatureHeinz | = 1 if Heinz had a store feature, =0 if Heinz did not have a store feature
+FeatureHunts | = 1 if Hunts had a store feature, =0 if Hunts did not have a store feature
+
+* Estimated a logit probability model for the probability that Heinz is purchased taking into consideration interaction terms between display and feature for a particular brand (e.g., DisplHeinz * FeatureHeinz) along with other explanatory variables. 
+
+* Based on the estimated model, explored the changes in predicted probability that Heinz is purchased if LogPriceRatio changes from 0.5 to 0.6 and Heinz does not use a feature or display, while Hunts uses a feature and a display.
+
+The estimated model is to be used for targeting customers for Hunts coupons to build loyalty for the brand. Coupons are to be sent to customers who are likely to buy Hunts, and not to customers who are likely to buy Heinz. Therefore, the coupons should be sent to customers whose predicted probability of buying Heinz is below a certain threshold level that needs to be determined based on the costs of misclassifications (incorrectly sending / not sending a coupon). The cost of incorrectly sending a coupon to a customer who would have bought Heinz is $1 per customer, and the cost of incorrectly failing to send a coupon to a customer who would have bought Hunts is $0.25 per customer. 
+
+* Estimated the optimal threshold probability level that should be used with the estimated model to decide which consumers should receive coupons using ROC metrics
+
